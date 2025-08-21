@@ -1,10 +1,22 @@
-name: Demo Workflow   # Workflow name
+name: Greeting on variable day
 
-on: [push]
+on:
+  workflow_dispatch
+
+
+  
+
 jobs:
-  show-contexts:             # Job name
+  greeting_job:
     runs-on: ubuntu-latest
+  
+    
     steps:
-      - name: show the Github Contexts
-        run: echo "event by ${{github.actor}} on branch ${{github.ref}}"
-      
+      - name: "Greetings"
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Selva
+          DAY_OF_WEEK: sunday
+          Greeting: Hello
+
+       
